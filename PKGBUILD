@@ -2,7 +2,7 @@
 # Contributor: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=wine-staging-vulkan-git
-pkgver=3.6.r0.g8fd6d103+wine.3.6.r0.g3f281a3baa
+pkgver=3.7.r0.g4af8ffc7+wine.3.7.r0.g9fecb74995
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (staging branch, git version) with Vulkan patches'
 arch=('i686' 'x86_64')
@@ -83,7 +83,7 @@ options=('staticlibs')
 install="$pkgname".install
 source=('wine-git'::'git+https://github.com/wine-mirror/wine.git'
         "wine-staging"::'git+https://github.com/wine-staging/wine-staging.git'
-	'wine-pba'::'git+https://github.com/firerat/wine-pba.git#branch=heap_size_envvars'
+	'wine-pba'::'git+https://github.com/firerat/wine-pba.git'
         'gallium9'::'git+https://github.com/sarnex/wine-d3d9-patches.git'
         'fallout4.patch'
         'pathofexile.patch'
@@ -127,17 +127,17 @@ prepare() {
     cd "${srcdir}"/wine-staging
     git reset --hard HEAD      # restore tracked files
     git clean -xdf             # delete untracked files
-    git checkout tags/v3.6     # version checkout
+    git checkout tags/v3.7     # version checkout
     
     cd "${srcdir}"/gallium9
     git reset --hard HEAD      # restore tracked files
     git clean -xdf             # delete untracked files
-    git checkout tags/wine-d3d9-3.6     # version checkout
+    git checkout tags/wine-d3d9-3.7     # version checkout
 
     cd "${srcdir}"/wine-pba
     git reset --hard HEAD      # restore tracked files
     git clean -xdf             # delete untracked files
-    git checkout tags/3.6     # version checkout
+    git checkout tags/knobs_and_switches-v3.7     # version checkout
 
     cd "${srcdir}"/wine-git
     # restore the wine tree to its git origin state, without wine-staging patches
