@@ -168,7 +168,7 @@ prepare() {
     
     # then apply staging patches
     echo "***staging patches***"
-    ../wine-staging/patches/patchinstall.sh --all
+    ../wine-staging/patches/patchinstall.sh --all -W server-send_hardware_message
 
     # add pba patches
     echo "***pba patches***"
